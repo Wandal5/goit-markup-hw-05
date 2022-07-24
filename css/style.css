@@ -29,7 +29,7 @@ html
 *::after {
   box-sizing: inherit;
   transition-property: color, background-color;
-  transition-duration: 2250ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -259,11 +259,12 @@ transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 .nav-link,
 .contact-link {
-  display: block;
+  display: flex;
   justify-content: center;
   padding-top: 32px;
   padding-bottom: 32px;
   align-items: center;
+  
 }
 
 .contact-link:hover,
@@ -589,7 +590,8 @@ transform: scale(0);
 }
 
 .icon:hover {
-  fill: var(--color-light-blue);
+  fill: currentColor; 
+  
 }
 
 .tel-icon {
