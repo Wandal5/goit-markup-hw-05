@@ -13,9 +13,13 @@
   --color-bg-footer-social-links: rgba(255, 255, 255, 0.1);
   --color-client-border: 1px solid #afb1b8;
   --color-client-bord-hover: 1px solid #2196f3;
+  --color-bg-about:rgba(47, 48, 58, 0.8);
+  --color-overlay-portfolio:rgba(33, 150, 243, 0.9);
+  --color-bg-overlay-modal-window: rgba(0, 0, 0, 0.2)
 }
 
-html {
+html 
+{
   box-sizing: border-box;
 }
 
@@ -118,7 +122,7 @@ body {
   color: currentColor;
   text-decoration: none;
   transition-property: color, background-color;
-  transition-duration: 1250ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -210,6 +214,7 @@ body {
 
 .about-item {
   flex-basis: calc((100% - 60px) / 3);
+  position: relative;
 }
 
 .filter-list {
@@ -281,8 +286,60 @@ body {
   border: none;
   cursor: pointer;
   transition-property: color, background-color;
-  transition-duration: 1250ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+ height: 100%;
+ background: rgba(var(--color-white), 0.3);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.modal-window {
+  position: relative;
+  z-index: 2;
+  width: 528px;
+  height: 581px;
+  background: var(--color-white);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.modal .overlay-modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-overlay-modal-window);
+  z-index: 0;
+}
+.modal-close-button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: var(--color-white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 0;
+
+}
+
+.is-hidden {
+  display: none;
+}
+
+.modal-close-button:hover .close-button-cross {
+  fill: var(--color-light-blue);
 }
 
 .hero-button:hover,
@@ -307,6 +364,20 @@ body {
   line-height: 1.16;
   color: var(--color-dark-grey);
   text-align: center;
+}
+
+.about-card {
+	width	: 100%;
+  position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+  background-color: var(--color-bg-about);
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-white);
+  padding: 27px;
 }
 
 .team-item {
@@ -390,7 +461,7 @@ body {
     0px 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   transition-property: color, background-color;
-  transition-duration: 1250ms;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -419,10 +490,46 @@ body {
 }
 .portfolio-link {
   display: inline-block;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ 
+  
 }
+.project-overlay{
+  position: relative;
+  overflow: hidden;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-white);
+  font-size: 18px;
+  line-height: 28px;
+/* or 156% */
 
+  letter-spacing: 0.03em;
+
+  background-color: var(--color-overlay-portfolio);
+  transform: translatey(100%);
+  transition: transform 250ms ease;
+  padding: 63px 24px;
+    opacity: 0;
+}
+  
+
+  .portfolio-link:hover .overlay,
+  .portfolio-link:focus .overlay  {
+    transform: translatex(0);
+    opacity: 1;
+
+  }
 .portfolio-item {
   flex-basis: calc((100% - 60px) / 3);
+  
 }
 
 .portfolio-link:hover,
@@ -444,6 +551,7 @@ body {
 .cards-content {
   padding: 20px 24px;
   border: var(--color-border);
+ 
 }
 
 /*----- описание логотипов---- */
@@ -598,10 +706,16 @@ body {
 
   border-radius: 4px;
   cursor: pointer;
+  transition-property: border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .socials-icon-logo {
   fill: var(--color-grey);
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover,
