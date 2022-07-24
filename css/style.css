@@ -27,6 +27,9 @@ html
 *::before,
 *::after {
   box-sizing: inherit;
+  transition-property: color, background-color;
+  transition-duration: 2250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .visually-hidden {
@@ -228,9 +231,34 @@ body {
   align-items: center;
 }
 
+.nav-list .blue::after,
+.nav-link:hover::after
+{
+  display: block;
+ 
+  
+}
+.nav-link::after{
+display: block; 
+content: "";
+width: 100%;
+height: 4px;
+background-color: var(--color-light-blue);
+border-radius: 2px;
+position: absolute;
+display: none;
+bottom: 0;
+transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.nav-link{
+  position: relative;
+}
+
 .nav-link,
 .contact-link {
-  display: flex;
+  display: block;
   justify-content: center;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -285,9 +313,7 @@ body {
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .modal {
@@ -300,6 +326,9 @@ body {
  display: flex;
  align-items: center;
  justify-content: center;
+ transform: translate(-50% -50%);
+
+ 
 }
 .modal-window {
   position: relative;
@@ -309,6 +338,8 @@ body {
   background: var(--color-white);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);;
+ 
 }
 .modal .overlay-modal{
   position: absolute;
@@ -336,6 +367,9 @@ body {
 
 .is-hidden {
   display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .modal-close-button:hover .close-button-cross {
