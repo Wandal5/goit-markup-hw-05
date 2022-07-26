@@ -15,23 +15,18 @@
   --color-client-bord-hover: 1px solid #2196f3;
   --color-bg-about:rgba(47, 48, 58, 0.8);
   --color-overlay-portfolio:rgba(33, 150, 243, 0.9);
-  --color-bg-overlay-modal-window: rgba(0, 0, 0, 0.2)
+  --color-bg-overlay-modal-window: rgba(0, 0, 0, 0.2);
+  --color-bg-hover-button-hero: #188CE8;
+  --transition-duration: 250ms ;
+  --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
   
 }
 
-html 
-{
-  box-sizing: border-box;
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  transition-property: color, background-color;
+  /* transition-property: color, background-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
+  transition-timing-function: ; */
+
 
 .visually-hidden {
   position: absolute;
@@ -67,7 +62,7 @@ img {
   height: auto;
 }
 /* убираем рамку браузера */
-a:active,
+/* a:active,
 a:focus {
   outline: none;
 }
@@ -90,8 +85,8 @@ textarea {
   resize: vertical;
 }
 textarea {
-  resize: horizontal;
-}
+  resize: horizontal; */
+
 /* убираем рамку браузера */
 .team-item img {
   margin-bottom: 30px;
@@ -125,9 +120,7 @@ body {
 .link {
   color: currentColor;
   text-decoration: none;
-  transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ 
 }
 
 .container {
@@ -233,23 +226,25 @@ body {
 }
 
 .nav-list .blue::after,
-.nav-link:hover::after
+.nav-link:hover::after,
+.nav-link:focus::after
 {
-  display: block;
+  
+  opacity: 1;
  
   
 }
 .nav-link::after{
-display: block; 
 content: "";
 width: 100%;
 height: 4px;
 background-color: var(--color-light-blue);
 border-radius: 2px;
 position: absolute;
-display: none;
-bottom: 0;
-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+display: block;
+opacity: 0;
+bottom: -1px;
+transition: opacity var(--transition-duration) var(--transition-function);
 
 }
 
@@ -264,6 +259,8 @@ transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   padding-top: 32px;
   padding-bottom: 32px;
   align-items: center;
+  transition-property: color, background-color;
+  transition: var(--transition-duration) var(--transition-function);
   
 }
 
@@ -315,7 +312,14 @@ transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: background-color;
+  transition: var(--transition-duration) var(--transition-function);
+  }
+
+.hero-button:hover,
+.hero-button:focus {
+  background-color: var(--color-bg-hover-button-hero);
+  outline: none;
 }
 
 .backdrop {
@@ -328,7 +332,7 @@ transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--transition-duration) var(--transition-function) visibility;
  
 }
 
@@ -340,7 +344,7 @@ transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--color-white);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);;
+  transition: transform var(--transition-duration) var(--transition-function);
 }
 .backdrop.is-hidden .modal {
 transform: scale(0);
@@ -371,11 +375,7 @@ transform: scale(0);
   fill: var(--color-light-blue);
 }
 
-.hero-button:hover,
-.hero-button:focus {
-  background-color: var(--color-filter-button);
-  color: var(--color-dark-grey);
-}
+
 
 .description-title {
   font-weight: 700;
@@ -401,6 +401,7 @@ transform: scale(0);
 	bottom: 0;
 	left: 0;
 	width: 100%;
+  font-weight: 700;
   background-color: var(--color-bg-about);
   line-height: 16px;
   text-align: center;
@@ -448,14 +449,25 @@ transform: scale(0);
   margin: 0;
 }
 
+.adress-item:hover,
+.adress-item:focus {
+  color: var(--color-light-blue)
+}
+
 .adress-item:not(:last-child) {
   margin-bottom: 9px;
+}
+
+.adress-item {
+  transition-property: color;
+  transition: var(--transition-duration) var(--transition-function);
 }
 
 /* футер */
 
 .map {
   color: var(--color-white);
+  transition: var(--transition-duration) var(--transition-function);
 }
 
 .map:hover,
@@ -486,24 +498,23 @@ transform: scale(0);
   border: none;
   padding: 6px 22px;
   height: 38px;
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
+ 
   border-radius: 4px;
   transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition-duration) var(--transition-function);
 }
 
 .filter-button:hover,
 .filter-button:focus {
   background-color: var(--color-light-blue);
   color: var(--color-filter-button);
-  background: #2196f3;
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+  0px 2px 2px rgba(0, 0, 0, 0.12);
+  outline:none
   /* shadow-middle */
 }
 
 .container .logo-footer {
-  /* margin-top: 60px; */
   margin-bottom: 20px;
   display: inline-block;
 }
@@ -520,8 +531,8 @@ transform: scale(0);
 .portfolio-link {
   display: inline-block;
   transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition-duration) var(--transition-function);
+  outline: none;
  
   
 }
@@ -621,20 +632,6 @@ transform: scale(0);
   justify-self: center;
 }
 
-/* .team-content-list {
-  background-color: rgba(245, 244, 250, 1);
-  margin: 0 auto 30px;
-  width: 270px;
-  height: 120px;
-  border: none;
-  padding-top: 25px;
-} */
-/* .team-icon {
-  display: flex;
-  content: '';
-  margin: 0 auto;
-  text-align: center;
-} */
 /**|=======
    |социальные 
    |=======
@@ -654,20 +651,25 @@ transform: scale(0);
   height: 44px;
   background-color: var(--color-white);
   border-radius: 50%;
+  outline: none;
+  transition-property: background-color;
+  transition: var(--transition-duration) var(--transition-function);
 }
 
 .socials-icon {
   fill: var(--color-social-links);
+  transition-property: background-color fill;
+  transition: var(--transition-duration) var(--transition-function);
 }
 
 .socials-link:hover,
-.socials-link:focus {
+.socials-link:focus,
+.socials-link:active {
   background-color: var(--color-light-blue);
 }
 
-.socials-link:hover .socials-icon {
-  fill: var(--color-white);
-}
+.socials-link:hover .socials-icon,
+.socials-link:active .socials-icon,
 .socials-link:focus .socials-icon {
   fill: var(--color-white);
 }
@@ -675,6 +677,7 @@ transform: scale(0);
 .footer-social-title {
   color: var(--color-white);
   margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .footer-container {
@@ -689,33 +692,13 @@ transform: scale(0);
 .footer-section .socials-link {
   background-color: var(--color-bg-footer-social-links);
 }
-/* .footer-socials-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background-color: var(--color-bg-footer-social-links);
-  border-radius: 50%;
-  margin-bottom: 30px;
-} */
+
 
 .footer-section .socials-link:hover,
 .footer-section .socials-link:focus {
   background-color: var(--color-light-blue);
 }
 
-/* .client-section-title {
-  text-align: center;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 42px;
-  color: var(--color-dark-grey);
-
-  margin-bottom: 50px;
-} */
 
 .client-list {
   display: flex;
@@ -731,32 +714,26 @@ transform: scale(0);
   align-items: center;
   justify-content: center;
   height: 92px;
-
   border: var(--color-client-border);
-
+  outline: none;
   border-radius: 4px;
   cursor: pointer;
-  transition-property: border;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: border, fill;
+  transition: var(--transition-duration) var(--transition-function);
 }
 
 .socials-icon-logo {
-  fill: var(--color-grey);
-  transition-property: fill;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  fill: var(--color-social-links);
+  transition: var(--transition-duration) var(--transition-function);
 }
 
 .client-link:hover,
 .client-link:focus {
-  fill: var(--color-light-blue);
+
   border: var(--color-client-bord-hover);
 }
 
-.client-link:hover .socials-icon-logo {
-  fill: var(--color-light-blue);
-}
+.client-link:hover .socials-icon-logo,
 .client-link:focus .socials-icon-logo {
   fill: var(--color-light-blue);
 }
