@@ -259,8 +259,7 @@ transition: opacity var(--transition-duration) var(--transition-function);
   padding-top: 32px;
   padding-bottom: 32px;
   align-items: center;
-  transition-property: color, background-color;
-  transition: var(--transition-duration) var(--transition-function);
+  transition: color var(--transition-duration) var(--transition-function), background-color var(--transition-duration) var(--transition-function);
   
 }
 
@@ -361,6 +360,7 @@ transform: scale(0);
   opacity: 0.7;
   cursor: pointer;
   padding: 0;
+  transition: fill var(--transition-duration) var(--transition-function);
 
 }
 
@@ -458,15 +458,14 @@ transform: scale(0);
 }
 
 .adress-item {
-  transition-property: color;
-  transition: var(--transition-duration) var(--transition-function);
+  transition:color var(--transition-duration) var(--transition-function);
 }
 
 /* футер */
 
 .map {
   color: var(--color-white);
-  transition: var(--transition-duration) var(--transition-function);
+  transition: color var(--transition-duration) var(--transition-function);
 }
 
 .map:hover,
