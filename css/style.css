@@ -306,20 +306,19 @@ transition: opacity var(--transition-duration) var(--transition-function);
   font-size: 16px;
   line-height: 1.875;
   letter-spacing: 0.06em;
+  outline: none;
   background: var(--color-light-blue);
   color: var(--color-white);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition-property: background-color;
-  transition: var(--transition-duration) var(--transition-function);
+  transition: background-color var(--transition-duration) var(--transition-function);
   }
 
 .hero-button:hover,
 .hero-button:focus {
   background-color: var(--color-bg-hover-button-hero);
-  outline: none;
 }
 
 .backdrop {
@@ -495,13 +494,12 @@ transform: scale(0);
   background: var(--color-filter-button);
   color: var(--color-dark-grey);
   cursor: pointer;
+  outline:none
   border: none;
   padding: 6px 22px;
   height: 38px;
- 
   border-radius: 4px;
-  transition-property: color, background-color;
-  transition: var(--transition-duration) var(--transition-function);
+  transition: color var(--transition-duration) var(--transition-function), background-color var(--transition-duration) var(--transition-function), box-shadow var(--transition-duration) var(--transition-function);
 }
 
 .filter-button:hover,
@@ -510,7 +508,7 @@ transform: scale(0);
   color: var(--color-filter-button);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
   0px 2px 2px rgba(0, 0, 0, 0.12);
-  outline:none
+
   /* shadow-middle */
 }
 
@@ -530,8 +528,7 @@ transform: scale(0);
 }
 .portfolio-link {
   display: inline-block;
-  transition-property: box-shadow;
-  transition: var(--transition-duration) var(--transition-function);
+  transition: box-shadow var(--transition-duration) var(--transition-function);
   outline: none;
  
   
@@ -652,14 +649,12 @@ transform: scale(0);
   background-color: var(--color-white);
   border-radius: 50%;
   outline: none;
-  transition-property: background-color;
-  transition: var(--transition-duration) var(--transition-function);
+  transition: background-color var(--transition-duration) var(--transition-function);
 }
 
 .socials-icon {
   fill: var(--color-social-links);
-  transition-property: background-color fill;
-  transition: var(--transition-duration) var(--transition-function);
+  transition: fill var(--transition-duration) var(--transition-function);
 }
 
 .socials-link:hover,
@@ -718,13 +713,12 @@ transform: scale(0);
   outline: none;
   border-radius: 4px;
   cursor: pointer;
-  transition-property: border, fill;
-  transition: var(--transition-duration) var(--transition-function);
+  transition: border var(--transition-duration) var(--transition-function);
 }
 
 .socials-icon-logo {
   fill: var(--color-social-links);
-  transition: var(--transition-duration) var(--transition-function);
+  transition: fill var(--transition-duration) var(--transition-function);
 }
 
 .client-link:hover,
